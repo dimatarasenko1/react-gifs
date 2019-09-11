@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gifs: []
+      gifs: [],
+      selectedGifId: "r62TBdD8aNIwU"
     };
   }
 
@@ -24,17 +25,23 @@ class App extends Component {
     });
   }
 
+  selectGif(id) {
+    this.setState({
+      selectedGifId: id
+    });
+  }
+
   render() {
     return (
       <div>
         <div className="left-scene">
           <SearchForm searchFunction={this.search.bind(this)} />
           <div className="selected-gif">
-            <Gif id="26TKdVCKTjwE6ws2vB" />
+            <Gif id={this.state.selectedGifId} />
           </div>
         </div>
         <div className="right-scene">
-          <GifList gifs={this.state.gifs} />
+          <GifList gifs={this.state.gifs} changeSelect={this.selectGif.bind(this)} />
         </div>
       </div>
     );

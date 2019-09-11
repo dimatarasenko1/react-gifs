@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 
 class Gif extends Component {
-  constructor(props) {
-    super(props);
-    this.link = `https://media.giphy.com/media/${props.id}/giphy.gif`;
+  handleClick = (event) => {
+    this.props.changeSelect(this.props.id);
   }
 
   render() {
-    return (
-      <img src={this.link} alt="gif" className="gif selected-gif" />
-    );
+    if (this.props.id !== '') {
+      const link = `https://media.giphy.com/media/${this.props.id}/giphy.gif`;
+      return (
+        <img src={link} alt="gif" className="gif selected-gif" onClick={this.handleClick} />
+      );
+    } else {
+      return null;
+    }
   }
 }
 

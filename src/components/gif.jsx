@@ -9,7 +9,7 @@ class Gif extends Component {
     if (this.props.id !== '') {
       const link = `https://media.giphy.com/media/${this.props.id}/giphy.gif`;
       return (
-        <img src={link} alt="gif" className="gif selected-gif" onClick={this.handleClick} />
+        <img src={link} alt="gif" className="gif" onClick={this.handleClick} />
       );
     } else {
       return null;
